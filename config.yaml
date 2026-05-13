@@ -3,6 +3,26 @@ df_name: Wegzugsbesteuerung-Calculator
 welle_introduced: welle-43
 type: foundation-df
 crux-mk: true
+
+default_action:
+  description: "Wegzugsbesteuerung-Calculator §6 AStG - Steuer-Hochrechnung (6-7-stellig EUR moeglich) + DBA-DE-USA-Auslegung + Kinder-Freibetraege + Familien-Steuerklassen-Wechsel (Empfehlungs-only mit StBerG §3-Vorbehalt - PFLICHT-Steuerberater-Validierung VOR Action)"
+  rho_per_run_eur: 200
+  rho_validation_source: unvalidated
+  block_gates:
+    - gate_id: K13_PAV
+      block_reason: "Pre-Action-Verification HARD-PFLICHT bei K_0-DIRECT 6-7-stellig EUR: KEINE Direct-Steuer-Action (Steuerberater-Vorbehalt §3 StBerG) + DBA-Auslegung-Risiko + Q_0-Familien-Steuerklassen"
+      false_block_cost_eur: 150
+      legitimate_block_condition: "Direct-Steuer-Action-Attempt ohne Steuerberater-Validierung (immer REJECT, §3 StBerG) ODER Production-Mode ohne PHRONESIS_TICKET"
+    - gate_id: K14
+      block_reason: "Human-Override-Decay: Steuer-Calculator-Output IMMER Martin-Review + Steuerberater-Sign-Off VOR Action"
+      false_block_cost_eur: 120
+      legitimate_block_condition: "Auto-Action-Trigger ohne Martin+Steuerberater-Sign-Off ODER override_complexity > requires_specialist"
+    - gate_id: K11
+      block_reason: "Cascade-Containment: Calculator-Output darf KEINEN automatischen Wegzug-Trigger ausloesen"
+      false_block_cost_eur: 100
+      legitimate_block_condition: "Auto-Wegzug-Trigger detected (immer REJECT)"
+  graceful_degradation_path: "Sandbox-Berechnungs-only-Mode mit Mock-Vermoegens-Profile (KEIN Real-Steuer-Filing, nur Hochrechnungs-Display fuer Steuerberater-Review)"
+
 k0_touch: true
 q0_touch: true
 k0_caveats:
