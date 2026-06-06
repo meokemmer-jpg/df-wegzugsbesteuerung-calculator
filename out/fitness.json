@@ -1,0 +1,8 @@
+{
+  "df": "df-wegzugsbesteuerung-calculator",
+  "ts": "2026-06-05T18:02:48.778642+00:00",
+  "ok": true,
+  "bytes": 2553,
+  "model": "qwen2.5:14b-instruct",
+  "duration_s": 46.5
+}
