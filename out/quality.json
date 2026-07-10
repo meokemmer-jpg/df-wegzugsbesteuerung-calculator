@@ -1,9 +1,9 @@
 {
   "df": "df-wegzugsbesteuerung-calculator",
-  "ts": "2026-07-09T02:59:23.191634+00:00",
+  "ts": "2026-07-10T01:05:16.995250+00:00",
   "maturity": "TESTED",
   "maturity_level": 4,
   "evidence_grade": 4,
-  "wargame_verdict": "CONDITIONAL",
+  "wargame_verdict": null,
   "crux": "[CRUX-MK]"
 }
